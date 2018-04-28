@@ -1,5 +1,6 @@
 package com.example.sseethoff.plannerapp;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,7 +11,7 @@ import android.widget.CalendarView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private  static final String TAG = "MainActivity";
+    private  static final String TAG = "CalendarActivity";
     private CalendarView mCalendarView;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
