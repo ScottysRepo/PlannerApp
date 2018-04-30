@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 import android.widget.Spinner;
 
@@ -26,6 +27,7 @@ public class CalendarActivity extends AppCompatActivity {
     private Button btnAddActivity;
     private EditText etAct;
     private Spinner spinner;
+    private TimePicker timePicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +42,13 @@ public class CalendarActivity extends AppCompatActivity {
         final CharSequence text = "Event has been added!";
         final int duration = Toast.LENGTH_SHORT;
 
+        //getting hours and minutes that user selects to use for event planning
+        int hour = timePicker.getCurrentHour();
+        int minute = timePicker.getCurrentMinute();
+
         Intent incoming = getIntent();
         String date = incoming.getStringExtra("date");
         thedate.setText(date);
-        // Spinner click listener
-      //  spinner.setOnItemSelectedListener(this);
 
         // Spinner Drop down elements
         List<String> categories = new ArrayList<String>();
@@ -65,7 +69,6 @@ public class CalendarActivity extends AppCompatActivity {
         spinner.setAdapter(dataAdapter);
 
         etAct.setInputType(InputType.TYPE_CLASS_TEXT);
-
         btngocalendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
