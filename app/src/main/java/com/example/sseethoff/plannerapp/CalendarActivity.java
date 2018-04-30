@@ -80,6 +80,7 @@ public class CalendarActivity extends AppCompatActivity {
         btnAddActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String text1 = spinner.getSelectedItem().toString();
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
                 String saved = etAct.getText().toString();
