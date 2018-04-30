@@ -43,8 +43,6 @@ public class CalendarActivity extends AppCompatActivity {
         final int duration = Toast.LENGTH_SHORT;
 
         //getting hours and minutes that user selects to use for event planning
-        int hour = timePicker.getCurrentHour();
-        int minute = timePicker.getCurrentMinute();
 
         Intent incoming = getIntent();
         String date = incoming.getStringExtra("date");
