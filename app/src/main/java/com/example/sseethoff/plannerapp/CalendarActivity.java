@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 import android.widget.Spinner;
 
@@ -19,13 +20,14 @@ import java.util.List;
 
 public class CalendarActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "CalendarActivity";
 
     private TextView thedate;
     private Button btngocalendar;
     private Button btnAddActivity;
     private EditText etAct;
     private Spinner spinner;
+    private TimePicker timePicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +38,18 @@ public class CalendarActivity extends AppCompatActivity {
         btnAddActivity = (Button) findViewById(R.id.btnAddActivity);
         etAct = (EditText) findViewById(R.id.etAct);
         spinner = (Spinner) findViewById(R.id.spinner);
-       final Context context = getApplicationContext();
+        timePicker = (TimePicker) findViewById(R.id.tp1);
+        final Context context = getApplicationContext();
         final CharSequence text = "Event has been added!";
         final int duration = Toast.LENGTH_SHORT;
+
+        //getting hours and minutes that user selects to use for event planning
+        int hour = timePicker.getCurrentHour();
+        int minute = timePicker.getCurrentMinute();
 
         Intent incoming = getIntent();
         String date = incoming.getStringExtra("date");
         thedate.setText(date);
-        // Spinner click listener
-      //  spinner.setOnItemSelectedListener(this);
 
         // Spinner Drop down elements
         List<String> categories = new ArrayList<String>();
@@ -65,23 +70,27 @@ public class CalendarActivity extends AppCompatActivity {
         spinner.setAdapter(dataAdapter);
 
         etAct.setInputType(InputType.TYPE_CLASS_TEXT);
-
         btngocalendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CalendarActivity.this,MainActivity.class);
+                Intent intent = new Intent(CalendarActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
         btnAddActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String text1 = spinner.getSelectedItem().toString();
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
                 String saved = etAct.getText().toString();
-                Intent intent = new Intent(CalendarActivity.this,MainActivity.class);
+                Intent intent = new Intent(CalendarActivity.this, MainActivity.class);
                 startActivity(intent);
 
             }
-        });    }
+
+        });
+
+    }
+
 }
