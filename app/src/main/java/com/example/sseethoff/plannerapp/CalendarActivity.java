@@ -38,12 +38,14 @@ public class CalendarActivity extends AppCompatActivity {
         btnAddActivity = (Button) findViewById(R.id.btnAddActivity);
         etAct = (EditText) findViewById(R.id.etAct);
         spinner = (Spinner) findViewById(R.id.spinner);
-       //timePicker = (TimePicker) findViewById(R.id.timePicker);
-       final Context context = getApplicationContext();
+        timePicker = (TimePicker) findViewById(R.id.tp1);
+        final Context context = getApplicationContext();
         final CharSequence text = "Event has been added!";
         final int duration = Toast.LENGTH_SHORT;
 
         //getting hours and minutes that user selects to use for event planning
+        int hour = timePicker.getCurrentHour();
+        int minute = timePicker.getCurrentMinute();
 
         Intent incoming = getIntent();
         String date = incoming.getStringExtra("date");
@@ -71,7 +73,7 @@ public class CalendarActivity extends AppCompatActivity {
         btngocalendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CalendarActivity.this,MainActivity.class);
+                Intent intent = new Intent(CalendarActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -81,7 +83,7 @@ public class CalendarActivity extends AppCompatActivity {
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
                 String saved = etAct.getText().toString();
-                Intent intent = new Intent(CalendarActivity.this,MainActivity.class);
+                Intent intent = new Intent(CalendarActivity.this, MainActivity.class);
                 startActivity(intent);
 
             }
@@ -90,15 +92,4 @@ public class CalendarActivity extends AppCompatActivity {
 
     }
 
-
-    public void onClick(View v) {
-        int hour = timePicker.getCurrentHour();
-        int minute = timePicker.getCurrentMinute();
-        TimePicker notifyTime = ((TimePicker) findViewById(R.id.tp1));
-        notifyTime.clearFocus();
-
-        hour = notifyTime.getCurrentHour();
-        minute = notifyTime.getCurrentMinute();
-
-    }
 }
