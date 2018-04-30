@@ -20,7 +20,7 @@ import java.util.List;
 
 public class CalendarActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "CalendarActivity";
 
     private TextView thedate;
     private Button btngocalendar;
@@ -38,6 +38,7 @@ public class CalendarActivity extends AppCompatActivity {
         btnAddActivity = (Button) findViewById(R.id.btnAddActivity);
         etAct = (EditText) findViewById(R.id.etAct);
         spinner = (Spinner) findViewById(R.id.spinner);
+       //timePicker = (TimePicker) findViewById(R.id.timePicker);
        final Context context = getApplicationContext();
         final CharSequence text = "Event has been added!";
         final int duration = Toast.LENGTH_SHORT;
@@ -84,5 +85,20 @@ public class CalendarActivity extends AppCompatActivity {
                 startActivity(intent);
 
             }
-        });    }
+
+        });
+
+    }
+
+
+    public void onClick(View v) {
+        int hour = timePicker.getCurrentHour();
+        int minute = timePicker.getCurrentMinute();
+        TimePicker notifyTime = ((TimePicker) findViewById(R.id.tp1));
+        notifyTime.clearFocus();
+
+        hour = notifyTime.getCurrentHour();
+        minute = notifyTime.getCurrentMinute();
+
+    }
 }
