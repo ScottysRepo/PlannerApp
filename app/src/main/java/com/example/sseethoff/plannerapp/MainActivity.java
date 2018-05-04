@@ -30,7 +30,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    private  static final String TAG = "CalendarActivity";
+    private  static final String TAG = "MainActivity";
     private CalendarView mCalendarView;
     private int answer;
     @Override
