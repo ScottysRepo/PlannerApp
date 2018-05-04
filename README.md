@@ -1,4 +1,4 @@
-Ultimate Life Planner  
+#Ultimate Life Planner  
 Kolton Brock and Scotty
 This is a Planning/Activity Tracking app, which means that there is a calendar that the individual dates can be pressed and that  
 brings up a list of the activities that are planned for that day as well a button to add new activities.  
