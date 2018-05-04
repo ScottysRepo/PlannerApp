@@ -21,7 +21,6 @@ import android.widget.TextView;
 
 import com.ealen.yahoo.weather.YahooAPI;
 
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.List;
