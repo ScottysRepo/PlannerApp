@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -28,6 +29,8 @@ public class CalendarActivity extends AppCompatActivity {
     private EditText etAct;
     private Spinner spinner;
     private TimePicker timePicker;
+    private String text = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +43,11 @@ public class CalendarActivity extends AppCompatActivity {
         spinner = (Spinner) findViewById(R.id.spinner);
         timePicker = (TimePicker) findViewById(R.id.tp1);
         final Context context = getApplicationContext();
-        final CharSequence text = "Event has been added!";
         final int duration = Toast.LENGTH_SHORT;
 
         //getting hours and minutes that user selects to use for event planning
-        int hour = timePicker.getCurrentHour();
-        int minute = timePicker.getCurrentMinute();
+        final int hour = timePicker.getCurrentHour();
+        final int minute = timePicker.getCurrentMinute();
 
         Intent incoming = getIntent();
         String date = incoming.getStringExtra("date");
@@ -61,7 +63,7 @@ public class CalendarActivity extends AppCompatActivity {
         categories.add("Other");
 
         // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+        final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
 
         // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -69,7 +71,15 @@ public class CalendarActivity extends AppCompatActivity {
         // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
 
+
         etAct.setInputType(InputType.TYPE_CLASS_TEXT);
+
+        final ArrayList<String> activities = new ArrayList<String>();
+        final ArrayAdapter<String> activitiesListAdapter = new ArrayAdapter<String>(this, R.layout.activity_listview, activities);
+        ListView listView = (ListView) findViewById(R.id.activitiesList);
+        listView.setAdapter(activitiesListAdapter);
+
+
         btngocalendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,17 +90,24 @@ public class CalendarActivity extends AppCompatActivity {
         btnAddActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String text1 = spinner.getSelectedItem().toString();
+                String selectedItemText = (String) spinner.getItemAtPosition(spinner.getLastVisiblePosition());
+
+                //
+                text = Integer.toString(hour) + ":" + Integer.toString(minute);
+                text += " > ";
+                text += selectedItemText;
+                text += " : ";
+                text += etAct.getText();
+
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
-                String saved = etAct.getText().toString();
-                Intent intent = new Intent(CalendarActivity.this, MainActivity.class);
-                startActivity(intent);
+                activities.add(text);
+                activitiesListAdapter.notifyDataSetChanged();
 
+                //Intent intent = new Intent(CalendarActivity.this, MainActivity.class);
+                //startActivity(intent);
             }
 
         });
-
     }
-
 }
