@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
     private  static final String TAG = "CalendarActivity";
     private CalendarView mCalendarView;
     private int answer;
-    private int answer2;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        //gets current location, if it fails along the way it sets location as amarillo texas
+        // checks if permissions are allowed
         LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
         String provider = locationManager.getBestProvider(new Criteria(), true);
         String _Location;
@@ -59,12 +58,7 @@ public class MainActivity extends AppCompatActivity {
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     answer);
         }
-        if (ContextCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(MainActivity.this,
-                    new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
-                    answer2);
-        }
+        //gets current location, if it fails along the way it sets location as amarillo texas
         Location locations = locationManager.getLastKnownLocation(provider);
         List<String> providerList = locationManager.getAllProviders();
         if (null != locations && null != providerList && providerList.size() > 0) {
@@ -91,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         String text2 = "";
         try{
             Yahoo.syncData();
-            text = Yahoo.Condition().getTemp();
+            text = Yahoo.Condition().getTemp() + "°";
             text2 = Yahoo.Condition().getText();
             /* this will be moved to the onclick for days that are coming up
             for(int i = 0; i < Yahoo.ListForecast().size(); i++){
