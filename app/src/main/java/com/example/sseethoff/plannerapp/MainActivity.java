@@ -59,8 +59,14 @@ public class MainActivity extends AppCompatActivity {
                     answer);
         }
         //gets current location, if it fails along the way it sets location as amarillo texas
-        Location locations = locationManager.getLastKnownLocation(provider);
-        List<String> providerList = locationManager.getAllProviders();
+        Location locations = null;
+        List<String> providerList = null;
+        try {
+            locations = locationManager.getLastKnownLocation(provider);
+            providerList = locationManager.getAllProviders();
+        } catch(RuntimeException e) {
+            e.printStackTrace();
+        }
         if (null != locations && null != providerList && providerList.size() > 0) {
             double longitude = locations.getLongitude();
             double latitude = locations.getLatitude();
