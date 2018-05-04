@@ -20,14 +20,14 @@ public class PlanBaseHelper extends SQLiteOpenHelper {
         db.execSQL("create table " + PlanTable.NAME + "(" +
                 " _id integer primary key autoincrement, " +
                 PlanTable.Cols.UUID + ", " +
-                PlanTable.Cols.ACTIVITY + ", " +
-                PlanTable.Cols.LOCATION +
+                PlanTable.Cols.ACTIVITY +
                 ")"
         );
         db.execSQL("create table " + DateTable.NAME + "(" +
-                " _id ineger primary key autoincrement, " +
-                DateTable.Cols.DATE + ", " +
-                DateTable.Cols.TIME + ")");
+                " _id integer primary key autoincrement, " +
+                PlanTable.Cols.UUID + ", " +
+                DateTable.Cols.DATE + ")"
+        );
     }
 
     @Override

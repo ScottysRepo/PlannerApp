@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "663848684496",
+    "firebase_url": "https://plannerapp-ac0a4.firebaseio.com",
+    "project_id": "plannerapp-ac0a4",
+    "storage_bucket": "plannerapp-ac0a4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:663848684496:android:07183a0d0bda432a",
+        "android_client_info": {
+          "package_name": "com.example.sseethoff.plannerapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "663848684496-d89t6h4sd8rgl9urni57nfsaifpg8q9n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sseethoff.plannerapp",
+            "certificate_hash": "55014a5be0f7393b1241a03c3ef786edda75ad65"
+          }
+        },
+        {
+          "client_id": "663848684496-v18dv7o0ijf9dcnnhmhi0hed0qt1orlb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGROawxSz9UYFf6v0FBXd4laRMiIxfvfs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "663848684496-v18dv7o0ijf9dcnnhmhi0hed0qt1orlb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

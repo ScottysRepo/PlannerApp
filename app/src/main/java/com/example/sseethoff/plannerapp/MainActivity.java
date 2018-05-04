@@ -59,8 +59,14 @@ public class MainActivity extends AppCompatActivity {
                     answer);
         }
         //gets current location, if it fails along the way it sets location as amarillo texas
-        Location locations = locationManager.getLastKnownLocation(provider);
-        List<String> providerList = locationManager.getAllProviders();
+        Location locations = null;
+        List<String> providerList = null;
+        try {
+            locations = locationManager.getLastKnownLocation(provider);
+            providerList = locationManager.getAllProviders();
+        } catch(RuntimeException e) {
+            e.printStackTrace();
+        }
         if (null != locations && null != providerList && providerList.size() > 0) {
             double longitude = locations.getLongitude();
             double latitude = locations.getLatitude();
@@ -80,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
             _Location = "Amarillo Texas";
         }
         //gets weather for current location if previous code got location
+        // Yahoo Weather API used is from https://github.com/Ealenn/YahooWeather-API-Android
         YahooAPI Yahoo = new YahooAPI(_Location);
         String text = "";
         String text2 = "";
@@ -87,15 +94,6 @@ public class MainActivity extends AppCompatActivity {
             Yahoo.syncData();
             text = Yahoo.Condition().getTemp() + "°";
             text2 = Yahoo.Condition().getText();
-            /* this will be moved to the onclick for days that are coming up
-            for(int i = 0; i < Yahoo.ListForecast().size(); i++){
-                text +=
-                        "Forecast n° " + String.valueOf(i) + " : " + Yahoo.ListForecast().get(i).getDate() + "\n" +
-                                "Text : " + Yahoo.ListForecast().get(i).getText() + "\n" +
-                                "High : " + Yahoo.ListForecast().get(i).getHigh() + " °F\n" +
-                                "Low : " + Yahoo.ListForecast().get(i).getLow() + " °F\n";
-            }
-            */
         } catch(Exception e){
             text = "Error!";
             text2 = "Error!";
