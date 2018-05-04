@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/PlannerApp.iml" filepath="$PROJECT_DIR$/PlannerApp.iml" />
+      <module fileurl="file://C:\CheckList\PlannerAppFINAL\PlannerApp.iml" filepath="C:\CheckList\PlannerAppFINAL\PlannerApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PlannerAppFINAL.iml" filepath="$PROJECT_DIR$/PlannerAppFINAL.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\CheckList\PlannerAppFINAL\app\app.iml" filepath="C:\CheckList\PlannerAppFINAL\app\app.iml" />
     </modules>
   </component>
 </project>
