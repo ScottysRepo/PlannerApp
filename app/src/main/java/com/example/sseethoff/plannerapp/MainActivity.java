@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
             _Location = "Amarillo Texas";
         }
         //gets weather for current location if previous code got location
+        // Yahoo Weather API used is from https://github.com/Ealenn/YahooWeather-API-Android
         YahooAPI Yahoo = new YahooAPI(_Location);
         String text = "";
         String text2 = "";
@@ -93,15 +94,6 @@ public class MainActivity extends AppCompatActivity {
             Yahoo.syncData();
             text = Yahoo.Condition().getTemp() + "°";
             text2 = Yahoo.Condition().getText();
-            /* this will be moved to the onclick for days that are coming up
-            for(int i = 0; i < Yahoo.ListForecast().size(); i++){
-                text +=
-                        "Forecast n° " + String.valueOf(i) + " : " + Yahoo.ListForecast().get(i).getDate() + "\n" +
-                                "Text : " + Yahoo.ListForecast().get(i).getText() + "\n" +
-                                "High : " + Yahoo.ListForecast().get(i).getHigh() + " °F\n" +
-                                "Low : " + Yahoo.ListForecast().get(i).getLow() + " °F\n";
-            }
-            */
         } catch(Exception e){
             text = "Error!";
             text2 = "Error!";
